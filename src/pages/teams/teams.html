@@ -1,0 +1,35 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Teams</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <ion-list>
+      <ion-item-group *ngFor="let division of teams">
+        <ion-item-divider color="secondary">{{division.divisionName}}</ion-item-divider>
+         <button *ngFor="let team of division.divisionTeams" ion-item (click)="itemTapped($event, team)">
+            {{team.name}}
+          </button>
+      </ion-item-group>
+  </ion-list>
+    
+        <!--en vez de este nombre de codificación dura
+        HC Elite, colocamos interpolación--->
+      
+
+
+  <!--
+  <button ion-item (click)="itemTapped()">
+    HC Elite
+  </button>
+  <button ion-item (click)="itemTapped()">
+    Team Takeover
+  </button>-->
+  
+</ion-content>

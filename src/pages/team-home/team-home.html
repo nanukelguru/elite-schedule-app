@@ -1,0 +1,30 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+     <!--
+      quitamos y ponemos interpolacion
+      <ion-title>TeamHome</ion-title>-->
+    <ion-title>{{team.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goHome()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>  
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<!--reemplazamos el ion content porque los tabs no van dentro de un ion content, sino solos
+  <ion-content padding>
+
+</ion-content>-->
+<ion-tabs>
+  <!--el root de este tab es igual a la propiedad que añadimos en team-home.ts-->
+  <ion-tab tabTitle="Team" [root]= "teamDetailTab" [rootParams]="team" tabIcon= "basketball"></ion-tab>
+  <ion-tab tabTitle="Standings" [root]= "standingsTab" [rootParams]="team" tabIcon= "podium"></ion-tab>
+
+</ion-tabs>
+
