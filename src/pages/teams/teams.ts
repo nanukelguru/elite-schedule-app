@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { TeamHomePage } from '../team-home/team-home';
 import { EliteApi } from '../../providers/elite-api/elite-api';
@@ -15,6 +15,7 @@ export class TeamsPage {
   //aqui agregaremos una variable privada para todos los equipos , esa lista grande
   private allTeams: any;
   private allTeamDivisions : any; 
+  public queryText: string;
   // public teams = [
   
   //   { id: 1, name: 'HC Elite' },
@@ -62,4 +63,17 @@ export class TeamsPage {
     this.navCtrl.push(TeamHomePage, team);
   }
 
+  updateTeams() {
+    let queryTextLower = this.queryText.toLowerCase();
+    let filteredTeams = [];
+    _.forEach(this.allTeamDivisions, td => {
+      let teams = _.filter(td.divisionTeams, t => (<any>t).name.toLowerCase().includes(queryTextLower));
+      if (teams.length) {
+        filteredTeams.push({ divisionName: td.divisionName, divisionTeams: teams });
+      }
+    });
+
+    this.teams = filteredTeams;
+
+  }
 }
