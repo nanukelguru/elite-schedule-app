@@ -10,6 +10,7 @@ import * as _ from 'lodash';
 })
 export class StandingsPage {
   public allStandings: any[];
+  public divisionFilter = 'division'; 
   //para filtrar standings
   public standings: any[];
   //este es el currently selected team
@@ -27,8 +28,9 @@ export class StandingsPage {
     let tourneyData = this.eliteApi.getCurrentTourney();
     //luego obtenemos todos los standings de entiretournament en el array de standings
     this.standings = tourneyData.standings;
+    this.allStandings = tourneyData.standings;
 
-    //performing the loadash group by , propiedad para divisionName y propiedad para divisionStandings que 
+    //performing the lodash group by , propiedad para divisionName y propiedad para divisionStandings que 
     //contienen ese array  
 
       // this.allStandings =
@@ -37,8 +39,7 @@ export class StandingsPage {
       //  .toPairs()
       //  .map(item => _.zipObject(['divisionName', 'divisionStandings'], item))
       //  .value();
-
-      this.allStandings = tourneyData.standings;
+    this.filterDivision(); 
     
     console.log('standings', this.standings);
     console.log('division Standings', this.allStandings);      
@@ -49,6 +50,14 @@ export class StandingsPage {
       return record.division;
     }
     return null;
+  }
+
+  filterDivision() {
+    if (this.divisionFilter === 'all') {
+      this.standings = this.allStandings;
+    } else {
+      this.standings = _.filter(this.allStandings, s => s.division === this.team.division);
+    }
   }
 }
 

@@ -4,8 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule, IonicPage } from 'ionic-angul
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
-
-
+import { AgmCoreModule } from '@agm/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyTeamsPage } from '../pages/my-teams/my-teams';
@@ -17,10 +16,12 @@ import { StandingsPage } from '../pages/standings/standings';
 import { TeamHomePage } from '../pages/team-home/team-home';
 import { EliteApi } from '../providers/elite-api/elite-api';
 import { UserSettings } from '../providers/user-settings/user-settings';
+import { MapPage } from '../pages/map/map';
 
 @NgModule({
   declarations: [
     MyApp,
+    MapPage,
     MyTeamsPage,
     GamePage,
     TeamsPage,
@@ -36,10 +37,12 @@ import { UserSettings } from '../providers/user-settings/user-settings';
     HttpModule,
     IonicStorageModule.forRoot(), 
     IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyB6Q-_nJt36h6JKaPeHiTIcQ56osUlvXmc' }) 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    MapPage,
     MyTeamsPage,
     GamePage,
     TeamsPage,
