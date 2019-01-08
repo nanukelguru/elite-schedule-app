@@ -4,6 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyTeamsPage } from '../pages/my-teams/my-teams';
 import { TournamentsPage } from '../pages/tournaments/tournaments';
+import { VibrationPage } from '../pages/vibration/vibration';
+import { GeolocationPage } from '../pages/geolocation/geolocation';
+import { CameraPage } from '../pages/camera/camera';
 
 
 
@@ -48,4 +51,13 @@ export class MyApp {
     this.nav.push(TournamentsPage);
   }
 
+  goToVibration(){
+    this.nav.push(VibrationPage);
+  }
+  goToGeolocation(){
+    this.nav.push(GeolocationPage);
+  }
+  gotoCamera(){
+    this.nav.push(CameraPage);
+  }
 }

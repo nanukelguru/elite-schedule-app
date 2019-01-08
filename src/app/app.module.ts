@@ -17,6 +17,12 @@ import { TeamHomePage } from '../pages/team-home/team-home';
 import { EliteApi } from '../providers/elite-api/elite-api';
 import { UserSettings } from '../providers/user-settings/user-settings';
 import { MapPage } from '../pages/map/map';
+import { VibrationPage } from '../pages/vibration/vibration';
+import { Vibration } from '@ionic-native/vibration';
+import { GeolocationPage } from '../pages/geolocation/geolocation';
+import { HttpClientModule } from '@angular/common/http';
+import { CameraPage } from '../pages/camera/camera';
+
 
 @NgModule({
   declarations: [
@@ -28,13 +34,18 @@ import { MapPage } from '../pages/map/map';
     TeamDetailPage,
     TournamentsPage,
     StandingsPage,
-    TeamHomePage
+    TeamHomePage,
+    VibrationPage,
+    GeolocationPage,
+    CameraPage
+ 
 
   
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     IonicStorageModule.forRoot(), 
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyB6Q-_nJt36h6JKaPeHiTIcQ56osUlvXmc' }) 
@@ -49,7 +60,11 @@ import { MapPage } from '../pages/map/map';
     TeamDetailPage,
     TournamentsPage,
     StandingsPage,
-    TeamHomePage
+    TeamHomePage,
+    VibrationPage,
+    GeolocationPage,
+    CameraPage
+  
     
     
 
@@ -59,7 +74,10 @@ import { MapPage } from '../pages/map/map';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     EliteApi,
-    UserSettings
+    UserSettings,
+    Vibration,
+    GeolocationPage,
+    CameraPage
   ]
 })
 export class AppModule {}
