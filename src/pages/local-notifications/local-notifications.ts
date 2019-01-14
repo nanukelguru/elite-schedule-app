@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the LocalNotificationsPageHtmlPage page.
+ * Generated class for the LocalNotificationsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-local-notifications-page-html',
-  templateUrl: 'local-notifications-page-html.html',
+  selector: 'page-local-notifications',
+  templateUrl: 'local-notifications.html',
 })
-export class LocalNotificationsPageHtmlPage {
+export class LocalNotificationsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LocalNotificationsPageHtmlPage');
+    console.log('ionViewDidLoad LocalNotificationsPage');
   }
 
 }
