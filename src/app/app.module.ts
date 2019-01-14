@@ -22,6 +22,8 @@ import { Vibration } from '@ionic-native/vibration';
 import { GeolocationPage } from '../pages/geolocation/geolocation';
 import { HttpClientModule } from '@angular/common/http';
 import { CameraPage } from '../pages/camera/camera';
+import { BarcodeScannerPage } from '../pages/barcode-scanner/barcode-scanner';
+import { DeviceMotionPage } from '../pages/device-motion/device-motion';
 
 
 @NgModule({
@@ -36,8 +38,10 @@ import { CameraPage } from '../pages/camera/camera';
     StandingsPage,
     TeamHomePage,
     VibrationPage,
-    GeolocationPage,
-    CameraPage
+   // GeolocationPage,
+    CameraPage,
+    BarcodeScannerPage,
+    DeviceMotionPage
  
 
   
@@ -62,8 +66,10 @@ import { CameraPage } from '../pages/camera/camera';
     StandingsPage,
     TeamHomePage,
     VibrationPage,
-    GeolocationPage,
-    CameraPage
+    //GeolocationPage,
+    CameraPage,
+    BarcodeScannerPage,
+    DeviceMotionPage
   
     
     
@@ -76,8 +82,10 @@ import { CameraPage } from '../pages/camera/camera';
     EliteApi,
     UserSettings,
     Vibration,
-    GeolocationPage,
-    CameraPage
+   // GeolocationPage,
+    CameraPage,
+    BarcodeScannerPage,
+    DeviceMotionPage
   ]
 })
 export class AppModule {}
