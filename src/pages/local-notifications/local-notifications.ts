@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the LocalNotificationsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @IonicPage()
 @Component({
@@ -14,12 +8,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'local-notifications.html',
 })
 export class LocalNotificationsPage {
+  results: string;
+  ln: LocalNotifications = new LocalNotifications();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LocalNotificationsPage');
-  }
-
+  constructor(private localNotifications: LocalNotifications, private notification : Notification) {
+    
+    LocalNotifications.on(`click`, (notification: { data: string; }) => {
+      var data = JSON.parse(notification.data);
+      this.results = data.name;
+      alert(`Notification received! (${data.name})`);
+      
+    });
+  
+  
+  this.localNotifications.schedule({
+    id: 1,
+    title: 'Cool Notification',
+    text: 'This is my cool notification!',
+    data: {
+      id:21,
+      name: 'Cool Notification #21'
+    }
+  });
+}
 }

@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 import { AgmCoreModule } from '@agm/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { MyTeamsPage } from '../pages/my-teams/my-teams';
 import { GamePage } from '../pages/game/game';
 import { TeamsPage } from '../pages/teams/teams';
@@ -19,11 +20,14 @@ import { UserSettings } from '../providers/user-settings/user-settings';
 import { MapPage } from '../pages/map/map';
 import { VibrationPage } from '../pages/vibration/vibration';
 import { Vibration } from '@ionic-native/vibration';
-import { GeolocationPage } from '../pages/geolocation/geolocation';
+//import { GeolocationPage } from '../pages/geolocation/geolocation';
 import { HttpClientModule } from '@angular/common/http';
 import { CameraPage } from '../pages/camera/camera';
 import { BarcodeScannerPage } from '../pages/barcode-scanner/barcode-scanner';
 import { DeviceMotionPage } from '../pages/device-motion/device-motion';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { LocalNotificationsPage } from '../pages/local-notifications/local-notifications';
+import { SqlStorage } from '../providers/sql-storage/sql-storage';
 
 
 @NgModule({
@@ -41,7 +45,8 @@ import { DeviceMotionPage } from '../pages/device-motion/device-motion';
    // GeolocationPage,
     CameraPage,
     BarcodeScannerPage,
-    DeviceMotionPage
+    DeviceMotionPage,
+    LocalNotificationsPage
  
 
   
@@ -69,8 +74,8 @@ import { DeviceMotionPage } from '../pages/device-motion/device-motion';
     //GeolocationPage,
     CameraPage,
     BarcodeScannerPage,
-    DeviceMotionPage
-  
+    DeviceMotionPage,
+    LocalNotificationsPage
     
     
 
@@ -78,6 +83,7 @@ import { DeviceMotionPage } from '../pages/device-motion/device-motion';
   providers: [
     StatusBar,
     SplashScreen,
+    SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     EliteApi,
     UserSettings,
@@ -85,7 +91,9 @@ import { DeviceMotionPage } from '../pages/device-motion/device-motion';
    // GeolocationPage,
     CameraPage,
     BarcodeScannerPage,
-    DeviceMotionPage
+    DeviceMotionPage,
+    LocalNotificationsPage,
+    SqlStorage
   ]
 })
 export class AppModule {}

@@ -5,8 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyTeamsPage } from '../pages/my-teams/my-teams';
 import { TournamentsPage } from '../pages/tournaments/tournaments';
 import { VibrationPage } from '../pages/vibration/vibration';
-import { GeolocationPage } from '../pages/geolocation/geolocation';
+//import { GeolocationPage } from '../pages/geolocation/geolocation';
 import { CameraPage } from '../pages/camera/camera';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { DeviceMotionPage } from '../pages/device-motion/device-motion';
+import { LocalNotificationsPage } from '../pages/local-notifications/local-notifications';
 
 
 
@@ -54,10 +57,16 @@ export class MyApp {
   goToVibration(){
     this.nav.push(VibrationPage);
   }
-  goToGeolocation(){
-    this.nav.push(GeolocationPage);
-  }
+  // goToGeolocation(){
+  //   this.nav.push(GeolocationPage);
+  // }
   gotoCamera(){
     this.nav.push(CameraPage);
+  }
+  goToDeviceMotion(){
+    this.nav.push(DeviceMotionPage)
+  }
+  goToLocalNotification(){
+    this.nav.push(LocalNotificationsPage);
   }
 }
