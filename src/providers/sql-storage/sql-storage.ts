@@ -9,34 +9,30 @@ export class SqlStorage {
 
   constructor(private sqlite: SQLite) { }
 
-  getAll(){
-    return this.db.executeSql('SELECT key, value FROM kv', []).then(data =>{
-      let results = [];
-      for(let i = 0; i < data.rows.length; i++) {
-        results.push(JSON.parse(data.rows.item(i).value));
-      }
-      return results;
-    });
+  async getAll(){
+    const data = await this.db.executeSql('SELECT key, value FROM kv', []);
+    let results = [];
+    for (let i = 0; i < data.rows.length; i++) {
+      results.push(JSON.parse(data.rows.item(i).value));
+    }
+    return results;
   }
    
-  get(key: string) {
-    return this.db.executeSql('select key, value from kv where key = ? limit 1', [key]).then(data => {
-      if (data.rows.length > 0) {
-        return JSON.parse(data.rows.item(0).value);
-      }
-    });
+  async get(key: string) {
+    const data = await this.db.executeSql('select key, value from kv where key = ? limit 1', [key]);
+    if (data.rows.length > 0) {
+      return JSON.parse(data.rows.item(0).value);
+    }
   }
   
   remove(key: string) {
     return this.db.executeSql('delete from kv where key = ?' , [key]);
   }
-  set(key: string, value: string) {
-    return this.db.executeSql('insert or replace into kv(key, value) values (?, ?)', [key, value]).then
-    (data => {
-      if (data.rows.length > 0) {
-        return JSON.parse(data.rows.item(0).value);
-      }
-    });
+  async set(key: string, value: string) {
+    const data = await this.db.executeSql('insert or replace into kv(key, value) values (?, ?)', [key, value]);
+    if (data.rows.length > 0) {
+      return JSON.parse(data.rows.item(0).value);
+    }
   }
 
   initializeDatabase(){

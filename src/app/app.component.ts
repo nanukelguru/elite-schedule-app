@@ -10,6 +10,7 @@ import { CameraPage } from '../pages/camera/camera';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { DeviceMotionPage } from '../pages/device-motion/device-motion';
 import { LocalNotificationsPage } from '../pages/local-notifications/local-notifications';
+import { UserSettings } from '../providers/user-settings/user-settings';
 
 
 
@@ -23,7 +24,10 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    private userSettings: UserSettings) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -37,6 +41,9 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
+      this.userSettings.initStorage().then(() => this.rootPage = MyTeamsPage)
+
     });
   }
 
